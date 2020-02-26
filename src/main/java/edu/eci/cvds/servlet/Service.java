@@ -17,11 +17,14 @@ public class Service {
 
    public static Todo getTodo(int id) throws MalformedURLException, IOException {
        URL urldemo = new URL("https://jsonplaceholder.typicode.com/todos/" + id);
+       
        URLConnection yc = urldemo.openConnection();
        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+       
        Gson gson = new Gson();
        Todo todo = gson.fromJson(in, Todo.class);
        in.close();
+       
        return todo;
    }
 

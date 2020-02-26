@@ -21,33 +21,48 @@ import javax.servlet.http.HttpServletResponse;
 
 public class mineServlet extends HttpServlet  {
 	
-	static final long serialVersionUID = 35L;
-	
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	Writer responseWriter = resp.getWriter();
     	try {   
     		Optional<String> optName = Optional.ofNullable(req.getParameter("id"));
-    		System.out.println("1");
-		    String id = optName.isPresent() && !optName.get().isEmpty() ? optName.get() : "";
-		    System.out.println(id);
-		    int intId = Integer.parseInt(id); 
-		    System.out.println("3");
-		    Todo todo= Service.getTodo(intId);
-		    System.out.println("4");
-		    ArrayList<Todo> listaTodos = new ArrayList<Todo>();
-		    System.out.println("5");
+		    int intId = Integer.parseInt(optName.get()); 
+		    Todo todo= Service.getTodo(intId); 
+		    ArrayList<Todo> listaTodos = new ArrayList<Todo>();    
 		    listaTodos.add(todo);
-		    System.out.println("6");
+		    resp.setStatus(HttpServletResponse.SC_OK);
 		    responseWriter.write(Service.todosToHTMLTable(listaTodos));
-		    System.out.println("7");
+		    responseWriter.flush();   
 		    
 	    }catch (java.lang.NumberFormatException e) {
-			responseWriter.write("requerimiento inválido");
+			responseWriter.write("Requerimiento invï¿½lido");
 		}catch (MalformedURLException e) {
-			responseWriter.write("error interno en el servidor");
+			responseWriter.write("Error interno en el servidor");
 		}catch(Exception e) {
-			responseWriter.write("requerimiento inválido");
+			responseWriter.write("Requerimiento invï¿½lido");
 		}
     }
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			Writer responseWriter = resp.getWriter();
+    	try {   
+    		Optional<String> optName = Optional.ofNullable(req.getParameter("id"));
+		    int intId = Integer.parseInt(optName.get()); 
+		    Todo todo= Service.getTodo(intId); 
+		    ArrayList<Todo> listaTodos = new ArrayList<Todo>();    
+		    listaTodos.add(todo);
+		    resp.setStatus(HttpServletResponse.SC_OK);
+		    responseWriter.write(Service.todosToHTMLTable(listaTodos));
+		    responseWriter.flush();  
+		    
+	    }catch (java.lang.NumberFormatException e) {
+			responseWriter.write("Requerimiento invï¿½lido");
+		}catch (MalformedURLException e) {
+			responseWriter.write("Error interno en el servidor");
+		}catch(Exception e) {
+			responseWriter.write("Requerimiento invï¿½lido");
+		}
+		
+	}
 }
