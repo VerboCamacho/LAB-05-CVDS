@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    	<style>
+	div.a {
+		text-align: center;
+	}
+</style>
+    <div class="a">
+<h:head> 
+	
+
+ </h:head>
+<body background="play.jpg">
+
+<h:body>
+
+
+	
+	
+	<img src="logo.png" alt="logo" >
+	</img>
+
+<h:form id="guess_form">
+	
+	<br> <label class="principal" for="number" style="color:red;font-size:300%" >Write a number between 0 and  1000</label> </br>
+	<p:outputLabel value="#{guessBean.numberToGuess}" style="display:none" />
+	<p:inputText  id= "playerNumber" type="int" binding="#{input}" >
+		<f:validateLongRange  minimum="0" maximum="1000" />
+	</p:inputText>
+	<h:message for = "playerNumber" style="color:red;margin:8px;" />
+	
+	
+	<br> <p:outputLabel class="estado" value="#{guessBean.estado}"/></br>
+	
+	
+	
+	
+	<br> <p:outputLabel  class="intentos" style="color:blue;font-size:200%" value="Number of attempts: " /> <p:outputLabel  class="nintentos" value="#{guessBean.numeroIntentos}" style="color:blue;font-size:300%" /></br>
+	
+	<br> <b><p:outputLabel  class="premio" style="color:Lime;font-size:200%" value="Acumulated Award " /> <p:outputLabel class="npremio" value="#{guessBean.acumulado}" style="color:Lime;font-size:200%"/> </b></br>
+	
+	
+	<p:commandButton value="Send Attempt" update="guess_form" actionListener="#{guessBean.guess(input.value)}" styleClass="Button" />
+	<p:commandButton value="Restart" update="guess_form" actionListener="#{guessBean.restart()}" styleClass="Button" />
+	
+	<br> </br>
+	<center>
+	<p:dataTable var="intento" value="#{guessBean.intentos}" style="width:250px;" styleClass = "Table">
+	<p:column headerText="Attempt" >
+		<h:outputText value= "#{guessBean.intentos.indexOf(intento)+1}" />
+	</p:column>
+	<p:column headerText="Attempt Value"  >
+		<h:outputText value= "#{intento}" />
+	</p:column>
+	</p:dataTable>
+	</center>
+	<strike>
+	
+	<br> <p:outputLabel class="numeroad" value="#{guessBean.numberToGuess}" /></br>
+	</strike> 
+</h:form>
+
+</h:body>
+</body>
+</div>
+
+</html>
