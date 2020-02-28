@@ -63,3 +63,10 @@ HTTP define un conjunto de métodos de petición para indicar la acción que se 
 * Muestran los datos segun el ID solicitado, este solo muestra la informacion con respecto a este valor.
 
 > Diagrama de Clases
+## Parte IV
+---
+> Punto 10
+
+- Sesión: Se define con el valor session en el faces-config.xml o con la anotación @SessionScoped en la clase. Las sesiones se definen internamente con el API de Servlets. Una sesión está asociada con una visita desde una navegador. Cuando se visita la página por primera vez se incia la sesión. Cualquier página que se abra dentro del mismo navegador comparte la sesión. La sesión mantiene el estado de los elementos de nuestra aplicación a lo largo de las distintas peticiones. Se implementa utilizando cookies o reescritura de URLs, con el parámetro jsessionid. Una sesión no finaliza hasta que se invoca el método invalidate en el objeto HttpSession, o hasta que se produce un timeout.
+
+- Aplicación: Se define con el valor application y con la anotación @ApplicationScoped. Los beans con este ámbito viven asociados a la aplicación. Definen singletons que se crean e inicializa sólo una vez, al comienzo de la aplicación. Se suelen utilizar para guardar características comunes compartidas y utilizadas por el resto de beans de la aplicación.
