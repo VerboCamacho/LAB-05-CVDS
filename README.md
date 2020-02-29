@@ -72,9 +72,13 @@ HTTP define un conjunto de métodos de petición para indicar la acción que se 
 
 - **Aplicación:** Se define con el valor application y con la anotación @ApplicationScoped. Los beans con este ámbito viven asociados a la aplicación. Definen singletons que se crean e inicializa sólo una vez, al comienzo de la aplicación. Se suelen utilizar para guardar características comunes compartidas y utilizadas por el resto de beans de la aplicación.
 
->Diagramas
+# Diagramas
+
+
 **GuessGame**
 ![Image](https://github.com/VerboCamacho/LAB-05-CVDS/blob/master/Imagenes/image.png)
+
+
 **Servlet**
 ![Image](https://github.com/VerboCamacho/LAB-05-CVDS/blob/master/Imagenes/imagen1.PNG)
 
